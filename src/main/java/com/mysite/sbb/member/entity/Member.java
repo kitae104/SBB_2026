@@ -1,5 +1,7 @@
 package com.mysite.sbb.member.entity;
 
+import com.mysite.sbb.audit.BaseEntity;
+import com.mysite.sbb.audit.BaseTimeEntity;
 import com.mysite.sbb.member.constant.Department;
 import com.mysite.sbb.member.constant.Gender;
 import jakarta.persistence.*;
@@ -14,7 +16,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Member {
+public class Member extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +40,5 @@ public class Member {
 
     @Column(nullable = false)
     private Boolean registration;           // 등록 확인
-
-    private LocalDateTime created;          // 생성일
 
 }

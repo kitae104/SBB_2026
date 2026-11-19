@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
 
 <div th:fragment="header">
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #212529;">
@@ -27,8 +29,14 @@
                         <a class="nav-link text-white" href="/question/list">질문 목록</a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item" sec:authorize="isAnonymous()">
                         <a class="nav-link text-white" href="/member/signup">회원 가입</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="isAnonymous()">
+                        <a class="nav-link text-white" href="/member/login">로그인</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <a class="nav-link text-white" href="/member/logout">로그아웃</a>
                     </li>
 
                     <li class="nav-item dropdown">
